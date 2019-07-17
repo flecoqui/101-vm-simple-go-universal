@@ -177,6 +177,7 @@ WriteLog "Firewall configured"
 
 WriteLog "Installing Go" 
 Start-Process msiexec.exe -Wait -ArgumentList '/I C:\testdotnetcore\log\go1.12.7.windows-amd64.msi /quiet'
+$env:Path += "c:\go\bin"
 WriteLog "Go installed" 
 
 WriteLog "Installing Git" 
