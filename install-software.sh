@@ -57,7 +57,7 @@ iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 install_go(){
 wget -q go1.12.7.linux-amd64.tar.gz https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
 mkdir /usr/local/go
-tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz 
+tar -C /usr/local -xzf go1.12.7.linux-amd64.tar.gz 
 export PATH=$PATH:/usr/local/go/bin
 }
 #############################################################################
