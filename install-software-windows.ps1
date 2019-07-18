@@ -9,20 +9,20 @@ param
 
 #Create folders
 mkdir \git
-mkdir \testdotnetcore
-mkdir \testdotnetcore\config
-mkdir \testdotnetcore\log
-$source = 'C:\testdotnetcore\log' 
+mkdir \testgo
+mkdir \testgo\config
+mkdir \testgo\log
+$source = 'C:\testgo\log' 
 If (!(Test-Path -Path $source -PathType Container)) {New-Item -Path $source -ItemType Directory | Out-Null} 
 
 function WriteLog($msg)
 {
 Write-Host $msg
-$msg >> C:\testdotnetcore\log\install.log
+$msg >> C:\testgo\log\install.log
 }
 function WriteDateLog
 {
-date >> C:\testdotnetcore\log\install.log
+date >> C:\testgo\log\install.log
 }
 if(!$dnsName) {
  WriteLog "DNSName not specified" 
@@ -176,12 +176,12 @@ WriteLog "Firewall configured"
 
 
 WriteLog "Installing Go" 
-Start-Process msiexec.exe -Wait -ArgumentList '/I C:\testdotnetcore\log\go1.12.7.windows-amd64.msi /quiet'
+Start-Process msiexec.exe -Wait -ArgumentList '/I C:\testgo\log\go1.12.7.windows-amd64.msi /quiet'
 $env:Path += "c:\go\bin"
 WriteLog "Go installed" 
 
 WriteLog "Installing Git" 
-Start-Process -FilePath "c:\testdotnetcore\log\Git-2.17.0-64-bit.exe" -Wait -ArgumentList "/VERYSILENT","/SUPPRESSMSGBOXES","/NORESTART","/NOCANCEL","/SP-","/LOG"
+Start-Process -FilePath "c:\testgo\log\Git-2.17.0-64-bit.exe" -Wait -ArgumentList "/VERYSILENT","/SUPPRESSMSGBOXES","/NORESTART","/NOCANCEL","/SP-","/LOG"
 
 $count=0
 while ((!(Test-Path "C:\Program Files\Git\bin\git.exe"))-and($count -lt 20)) { Start-Sleep 10; $count++}
